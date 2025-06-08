@@ -23,6 +23,7 @@ func main() {
 
 	http.HandleFunc("/", helloHandler)
 	http.HandleFunc("/receiveAutors", receiveAutors)
+	http.HandleFunc("/listAutors", listAutors)
 
 
 	fmt.Println("Server running at http://localhost:8080/")
