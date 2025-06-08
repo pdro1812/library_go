@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-
 	
 )
 
@@ -24,6 +23,7 @@ func main() {
 	http.HandleFunc("/", helloHandler)
 	http.HandleFunc("/receiveAutors", receiveAutors)
 	http.HandleFunc("/listAutors", listAutors)
+	http.HandleFunc("/receiveBook", receiveBook)
 
 
 	fmt.Println("Server running at http://localhost:8080/")
