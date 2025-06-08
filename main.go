@@ -24,6 +24,8 @@ func main() {
 	http.HandleFunc("/receiveAutors", receiveAutors)
 	http.HandleFunc("/listAutors", listAutors)
 	http.HandleFunc("/receiveBook", receiveBook)
+	http.HandleFunc("/listBook", listBook)
+	http.HandleFunc("/deleteBook", deleteBook)
 
 
 	fmt.Println("Server running at http://localhost:8080/")
