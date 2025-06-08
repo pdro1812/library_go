@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -10,10 +12,21 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	err := ConnectPostgres()
+	if err != nil {
+		fmt.Println("Database connection failed:", err)
+		return
+	}else{
+		fmt.Println("Database connected successfully")
+	}
+	defer DB.Close()
+
 	http.HandleFunc("/", helloHandler)
+	http.HandleFunc("/receiveAutors", receiveAutors)
+
 
 	fmt.Println("Server running at http://localhost:8080/")
-	err := http.ListenAndServe(":8080", nil)
+	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 	}
